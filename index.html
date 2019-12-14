@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vehicle Accident Register - Sign-in</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+         <!-- The below modules are required for the google API sign-in the details are adapted from the the google website https://developers.google.com/identity/sign-in/web/sign-in
+        -->
+        <meta name="google-signin-client_id" content="488806718921-5vhe1f86a1qr84u4ir7v0fod7lq5m317.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Place to position the google sign-in button-->
+    </head>
+
+    <body>
+    <!-- Web Page Heading -->
+        <div class="row" >
+            <div class="container-fluid p-3 my-3 bg-primary text-white" style="height:100px">
+                    <h1>Vehicle Accidents Register</h1>
+                    <p>The Irish road accidents information are available in this website.</p>
+            </div>
+        </div>
+        <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:10px"></div>
+    <!-- Google API Sign-in module  :: STARTs HERE -->
+        <div class="row container-fluid p-3 my-3 bg-primary text-white">
+          <!-- <div class="container-fluid p-3 my-3 bg-info text-white">  -->
+                <div class='col-lg-4'>
+                    <h4 id="sName" class="display-1" style="display:block;" >Use your Google ID to sign-in to the website</h4>
+                </div>
+                <div class='col-lg-4'>
+                    <!-- <div class="g-signin2" data-onsuccess="onSignIn">   </div> -->
+                </div>  
+         </div>
+         <div class="row container-fluid p-3 my-3 bg-primary text-white">
+            <div class='col-lg-4'>
+                <h4 class="display-1" style="display:none;" id="sOff">Sign-off</h4>
+            </div>
+            
+            <div class='col-lg-4'>
+                <!-- <div class="data"> <button onclick="signOut()" class="btn btn-danger" style="display:none;" id="sButton">SignOut</button> </div>-->
+                
+            </div>
+        </div>
+    <!-- Google API Sign-in module  :: ENDs HERE -->
+
+
+        <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:30px"></div>
+        <div class="row">
+            <div class="col-lg-5">
+                <form id="createUpdateForm" class="form-horizontal">
+                    <h3><span id="createLabel">Log a New</span>
+                        <span id="UpdateLabel" style="display:none">Update the</span>
+                        <span>Accident Details</span>
+                    </h3>
+                        <div class="form-group">
+                            <div class="input-group-prepend">
+                                <label class="col-sm-4 control-label">Province       :</label>
+                            </div>
+                            <input type="hidden" name="id"/>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="province">
+                                        <option selected="selected">Munster</option>
+                                        <option>Leinster</option>
+                                        <option>Ulster</option>
+                                        <option>Connaught</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-sm-4 control-label">Vehicle Type:</label> 
+                                <div class="col-sm-8">
+                                        <select class="form-control" id="VehicleType">
+                                                <option selected>Bus</option>
+                                                <option>Lorry</option>
+                                                <option>Car</option>
+                                                <option>Cycle</option>
+                                                <option>Truck</option>
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-sm-4 control-label">Driver Age    :</label> 
+                                <div class="col-sm-8">
+                                        <select class="form-control" id="DriverAge">
+                                                <option selected>16-20:Years</option>
+                                                <option>20-30:Years</option>
+                                                <option>40-50:Years</option>
+                                                <option>50-60:Years</option>
+                                                <option>61+:Years</option>
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-sm-4 control-label">Driver Gender  :</label> 
+                                <div class="col-sm-8">
+                                        <select class="form-control" id="DriverSex">
+                                                <option selected>Male</option>
+                                                <option>Female</option>
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-sm-4 control-label">Month-Year      :</label> 
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="month" name="MonthYear" id="MonthYear" min="2010-01" value="2019-12" >
+                                </div>
+
+                        </div>
+                </form>
+                <button class="btn btn-primary" id="doCreateButton" onclick="doCreate()">Create</button>
+                <span><button class="btn btn-primary" id="doUpdateButton" onclick="doUpdate()" style="display:none">Update</button></span>
+            </div>  
+            <div class="col-lg-7">
+                    <h3><span id="tableReport">Accident Details</span>
+                    </h3>
+                    <table class="table table-bordered " id="tAccident">
+                        <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">Province</th>
+                                    <th scope="col">Vehicle Type</th>
+                                    <th scope="col">Driver Age </th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Month-Year</th>
+                                </tr>
+                        </thead>
+                    </table>
+            </div>
+        </div>
+        <div id="output"></div>
+    </body>
+
+<script>
+    function showcreate()
+    {
+   //     document.getElementById('tAccident').style.display = "none";
+        document.getElementById('createLabel').style.display = "inline";
+        document.getElementById('UpdateLabel').style.display = "none";
+        document.getElementById('doCreateButton').style.display = "block";
+        document.getElementById('doUpdateButton').style.display = "none";
+    }
+    function showupdate()
+    {
+        //document.getElementById('tAccident').style.display = "none";
+        document.getElementById('createLabel').style.display = "none";
+        document.getElementById('UpdateLabel').style.display = "inline";
+        document.getElementById('doCreateButton').style.display = "none";
+        document.getElementById('doUpdateButton').style.display = "block";
+    }
+    function showViewAll()
+    {
+        document.getElementById('tAccident').style.display = "inline";
+    }
+    // this particular function is called when the google user is authenticaed
+    function onSignIn(googleUser)
+    {
+        document.getElementById('sName').style.display = "none";
+        document.getElementById("sButton").style.display = "block";
+        document.getElementById("sOff").style.display = "block";
+            
+        var profile=googleUser.getBasicProfile();
+        $(".g-signin2").css("display","block");
+        $(".data").css("display","block");
+        $(".#pic").attr('src',profile.getImageUrl());
+        $(".#email").text(profile.getEmail());
+
+    }
+    // this particular function is called when the google user is sign-off from the site.
+    function cleartable()
+            {
+                                    // Delete the table elements
+                var Table = document.getElementById("tAccident");
+                Table.innerHTML = "";
+            }
+    function signOut()
+            {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function(){
+                    alert("you have successfully signed out");
+                    $(".g-signin2").css("display","block");
+                    $(".data").css("display","none");
+                    document.getElementById("sName").style.display = "block";
+                });
+                document.getElementById('sName').style.display = "block";
+                document.getElementById("sOff").style.display = "none";
+            }
+    function clearForm()
+            {
+                var form=document.getElementById('createUpdateForm');
+                form.MonthYear.value="2019-12";
+               // document.getElementById('MonthYear').value ="2019-12";
+                var temp = "Munster";
+                var mySelect = document.getElementById('province');
+                for(var i, j = 0; i = mySelect.options[j]; j++) {
+                    if(i.value == temp) {
+                    mySelect.selectedIndex = j;
+                    break;
+                    }
+                }
+                var temp = "Bus";
+                var mySelect = document.getElementById('VehicleType');
+                for(var i, j = 0; i = mySelect.options[j]; j++) {
+                    if(i.value == temp) {
+                    mySelect.selectedIndex = j;
+                    break;
+                    }
+                }
+                var temp = "16-20:Years";
+                var mySelect = document.getElementById('DriverAge');
+                for(var i, j = 0; i = mySelect.options[j]; j++) {
+                    if(i.value == temp) {
+                    mySelect.selectedIndex = j;
+                    break;
+                    }
+                }
+                var temp = "Male";
+                var mySelect = document.getElementById('DriverSex');
+                for(var i, j = 0; i = mySelect.options[j]; j++) {
+                    if(i.value == temp) {
+                    mySelect.selectedIndex = j;
+                    break;
+                    }
+                }
+
+            }
+    function getAccidentFromForm()
+            {
+                var form=document.getElementById('createUpdateForm');
+                var Accident ={};
+                Accident.id = form.querySelector('input[name="id"]').value
+                Accident.province       = form.querySelector('select[id="province"]').value ;
+                Accident.VehicleType    = form.querySelector('select[id="VehicleType"]').value ;
+                Accident.DriverSex      = form.querySelector('select[id="DriverSex"]').value ;
+                Accident.DriverAge      = form.querySelector('select[id="DriverAge"]').value ;
+                var dateobj             = document.getElementById('MonthYear').value;
+                Accident.MonthYear      = dateobj.toString();
+                return Accident
+            }
+    // Post the transactions
+    // clear the accidents table
+    // populate the accidents table from the getaccidents() function 
+    function doCreate()
+            {
+                var Accident = getAccidentFromForm();
+                console.log(JSON.stringify(Accident));
+             //   host=window.location.origin;
+                $.ajax({                 
+                        "url": "http://127.0.0.1:5000/Accidents",   
+                        "method":"POST",                 
+                        "data":JSON.stringify(Accident),                 
+                        "dataType": "JSON",                 
+                        contentType: "application/json; charset=utf-8",                 
+                        "success":function(result){ 
+                                Accident.id = result.id
+                                addAccidentToTable(Accident)
+                                clearForm()
+                              //  showViewAll()
+                          },                 
+                        "error":function(xhr,status,error){                     
+                            console.log("error: "+status+" msg:"+error);                 
+                            }            
+                        });
+            }
+    // Get all the accident details from the database
+    // use a for loop to populate the taccident table
+        function getAccidents()
+            {
+                host=window.location.origin;
+                $.ajax({
+                           "url": "http://127.0.0.1:5000/Accidents",
+                       //     "url": host + "/Accidents",
+                            "method":"GET",
+                            "data":"",
+                            "dataType": "JSON",
+                            "success":function(result){
+                            for (Accident of result){
+                                    addAccidentToTable(Accident);
+                                    }  
+                                },
+                            "error":function(xhr,status,error){
+                                console.log("error:"+status+" msg:"+error);
+                                }
+                        });
+            }
+        // Delete an accident entry from the taccident table
+        // clear the html table
+        // populate the table from the database
+        function DeleteAccident(id)
+            {
+                host=window.location.origin;
+                $.ajax({
+                            "url": "http://127.0.0.1:5000/Accidents/"+encodeURI(id),
+                         //  "url":host+"/Accidents/"+encodeURI(id),
+                            "method":"DELETE",
+                            "data":"",
+                            "dataType": "JSON",
+                            "success":function(result){
+                             },
+                            "error":function(xhr,status,error){
+                                console.log("error:"+status+" msg:"+error);
+                                }
+                        });
+            }    
+                //update the value of the accident table
+        function UpdateAccident()
+            {
+              //  host=window.location.origin;
+              var Accident1 = getAccidentFromForm();
+              console.log(JSON.stringify(Accident1));
+                $.ajax({
+                            "url": "http://127.0.0.1:5000/Accidents/"+encodeURI(Accident1.id),
+                            "method":"PUT",
+                            "data":JSON.stringify(Accident1),
+                            "dataType": "JSON",
+                            contentType: "application/json; charset=utf-8",  
+                            "success":function(result){
+                                },
+                            "error":function(xhr,status,error){
+                                console.log("error:"+status+" msg:"+error);
+                                }
+                        });
+            }     
+
+// this function is used to add the accident details to the taccident table in the html page
+        function addAccidentToTable(Accident) 
+            {
+                
+                var tableElement = document.getElementById('tAccident');
+                var rowElement = tableElement.insertRow(-1);
+                rowElement.setAttribute('id',Accident.id);
+                var cell1 = rowElement.insertCell(0);
+                cell1.innerHTML = Accident.id;
+                var cell2 = rowElement.insertCell(1);
+                cell2.innerHTML = Accident.province;
+                var cell3 = rowElement.insertCell(2);
+                cell3.innerHTML = Accident.VehicleType;
+                var cell4 = rowElement.insertCell(3);
+                cell4.innerHTML = Accident.DriverAge;
+                var cell4 = rowElement.insertCell(4);
+                cell4.innerHTML = Accident.DriverSex;
+                var cell4 = rowElement.insertCell(5);
+                cell4.innerHTML = Accident.MonthYear;
+                var cell5 = rowElement.insertCell(6);
+                cell5.innerHTML = '<button onclick="showUpdate(this)"> update</button>';
+                var cell6 = rowElement.insertCell(7);
+                cell6.innerHTML = '<button onclick="doDelete(this)"> delete</button>';
+            }
+ 
+        // Delete the accident row from the table    
+        function doDelete(r)
+            {
+                var tableElement = document.getElementById('tAccident');
+                var rowElement = r.parentNode.parentNode;
+                var index = rowElement.rowIndex;
+                DeleteAccident(rowElement.getAttribute("id"));
+                tableElement.deleteRow(index);
+            }  
+
+        function showUpdate(buttonElement) 
+            {
+                var rowElement = buttonElement.parentNode.parentNode;
+                var Accident =getAccidentFromRow(rowElement);
+                populateFormWithAccident(Accident);
+                showupdate();
+            }     
+        function populateFormWithAccident(Accident)
+            {
+           var form=document.getElementById('createUpdateForm');
+           form.querySelector('input[name="id"]').value = Accident.id ;
+           form.querySelector('select[id="province"]').value = Accident.province ;
+           form.querySelector('select[id="VehicleType"]').value = Accident.VehicleType ;
+           form.querySelector('select[id="DriverSex"]').value =  Accident.DriverSex  ;
+           form.querySelector('select[id="DriverAge"]').value = Accident.DriverAge    ;
+           form.MonthYear.value =  Accident.MonthYear;
+             }   
+        function getAccidentFromRow(rowElement)
+            {
+                var Accident ={};
+                Accident.id  = rowElement.cells[0].firstChild.textContent;
+                Accident.province = rowElement.cells[1].firstChild.textContent;
+                Accident.VehicleType = rowElement.cells[2].firstChild.textContent;
+                Accident.DriverAge= rowElement.cells[3].firstChild.textContent;
+                Accident.DriverSex = rowElement.cells[4].firstChild.textContent;
+                Accident.MonthYear= rowElement.cells[5].firstChild.textContent;
+                return Accident;
+            }
+       
+        function doUpdate()
+            {
+                var Accident = getAccidentFromForm();
+                var rowElement = document.getElementById(Accident.id);
+                UpdateAccident();
+                setAccidentInRow(rowElement,Accident);
+                clearForm();
+                showcreate();
+            }
+        
+        function setAccidentInRow(rowElement, Accident)
+            {
+                rowElement.cells[0].firstChild.textContent= Accident.id  ;
+                rowElement.cells[1].firstChild.textContent= Accident.province; 
+                rowElement.cells[2].firstChild.textContent= Accident.VehicleType;
+                rowElement.cells[3].firstChild.textContent= Accident.DriverAge;
+                rowElement.cells[4].firstChild.textContent= Accident.DriverSex;
+                rowElement.cells[5].firstChild.textContent= Accident.MonthYear;
+            }
+            getAccidents();
+
+</script>
+</html>
