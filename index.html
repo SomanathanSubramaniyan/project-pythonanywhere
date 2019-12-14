@@ -243,9 +243,9 @@
             {
                 var Accident = getAccidentFromForm();
                 console.log(JSON.stringify(Accident));
-             //   host=window.location.origin;
+                host=window.location.origin;
                 $.ajax({                 
-                        "url": "http://127.0.0.1:5000/Accidents",   
+                        "url": host + "/Accidents",   
                         "method":"POST",                 
                         "data":JSON.stringify(Accident),                 
                         "dataType": "JSON",                 
@@ -267,8 +267,7 @@
             {
                 host=window.location.origin;
                 $.ajax({
-                           "url": "http://127.0.0.1:5000/Accidents",
-                       //     "url": host + "/Accidents",
+                           "url": host + "/Accidents",
                             "method":"GET",
                             "data":"",
                             "dataType": "JSON",
@@ -289,7 +288,7 @@
             {
                 host=window.location.origin;
                 $.ajax({
-                            "url": "http://127.0.0.1:5000/Accidents/"+encodeURI(id),
+                            "url": host+ "/Accidents/"+encodeURI(id),
                          //  "url":host+"/Accidents/"+encodeURI(id),
                             "method":"DELETE",
                             "data":"",
@@ -304,11 +303,11 @@
                 //update the value of the accident table
         function UpdateAccident()
             {
-              //  host=window.location.origin;
+              host=window.location.origin;
               var Accident1 = getAccidentFromForm();
               console.log(JSON.stringify(Accident1));
                 $.ajax({
-                            "url": "http://127.0.0.1:5000/Accidents/"+encodeURI(Accident1.id),
+                            "url": host+"/Accidents/"+encodeURI(Accident1.id),
                             "method":"PUT",
                             "data":JSON.stringify(Accident1),
                             "dataType": "JSON",
