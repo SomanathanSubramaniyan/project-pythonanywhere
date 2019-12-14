@@ -152,6 +152,7 @@
 // GOOGLE :  Logout  : Logout from the application
     function signOut()
             {
+                
                 var auth2 = gapi.auth2.getAuthInstance();
                 auth2.signOut().then(function(){
                     alert("you have successfully signed out");
@@ -161,8 +162,9 @@
                 });
                 document.getElementById('sName').style.display = "block";
                 document.getElementById("sOff").style.display = "none";
+                document.getElementById("Accidentdetails").style.display = "none";
 
-                document.getElementById("Accident-details").style.display = "none";
+                
             }
 
     function showcreate()
