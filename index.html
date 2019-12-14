@@ -44,7 +44,7 @@
     <!-- Google API Sign-in module  :: ENDs HERE -->
         <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:30px"></div>
 
-        <div class="row" id="Accident-details" style="display:none;">
+        <div class="row" id="Accidentdetails" style="display:none;">
             <div class="col-lg-5">
                 <form id="createUpdateForm" class="form-horizontal">
                     <h3><span id="createLabel">Log a New</span>
@@ -137,6 +137,7 @@
         document.getElementById('sName').style.display = "none";
         document.getElementById("sButton").style.display = "block";
         document.getElementById("sOff").style.display = "block";
+        document.getElementById("Accidentdetails").style.display = "block";
             
         var profile=googleUser.getBasicProfile();
         $(".g-signin2").css("display","block");
@@ -144,7 +145,7 @@
         $(".#pic").attr('src',profile.getImageUrl());
         $(".#email").text(profile.getEmail());
 
-        document.getElementById("Accident-details").style.display = "block";
+        document.getElementById("Accidentdetails").style.display = "block";
 
     }
 
