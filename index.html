@@ -24,10 +24,10 @@
     <!-- Google API Sign-in module  :: STARTs HERE -->
         <div class="row container-fluid p-3 my-3 bg-primary text-white">
           <!-- <div class="container-fluid p-3 my-3 bg-info text-white">  -->
-                <div class='col-lg-4'>
-                    <h4 id="sName" class="display-1" style="display:block;" >Use your Google ID to sign-in to the website</h4>
+                <div class='col-lg-2'>
+                    <h4 id="sName" class="display-1" style="display:block;" >Google Sign Status</h4>
                 </div>
-                <div class='col-lg-4'>
+                <div class='col-lg-2'>
                      <div class="g-signin2" data-onsuccess="onSignIn">   </div> 
                 </div>  
     <!-- </div>
@@ -156,7 +156,7 @@
 // GOOGLE :  Login Authentication : this particular function is called when the google user is authenticaed
         function onSignIn(googleUser)
     {
-        document.getElementById('sName').style.display = "none";
+        //document.getElementById('sName').style.display = "none";
         document.getElementById("sButton").style.display = "block";
         document.getElementById("sOff").style.display = "block";
         document.getElementById("Accidentdetails").style.display = "block";
@@ -183,7 +183,7 @@
                     $(".data").css("display","none");
                     document.getElementById("sName").style.display = "block";
                 });
-                document.getElementById('sName').style.display = "block";
+              //  document.getElementById('sName').style.display = "block";
                 document.getElementById("sOff").style.display = "none";
                 document.getElementById("Accidentdetails").style.display = "none";
                 document.getElementById("sSuccess").style.display = "none";
