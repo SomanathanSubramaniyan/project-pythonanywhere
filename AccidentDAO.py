@@ -10,11 +10,11 @@ class AccidentDAO:
      # function:: Connection to DB
      def connectToDB(self):
         self.db = mysql.connector.connect(
-        host=cfg.mysql['host'],
-        user=cfg.mysql['username'],
-        password=cfg.mysql['password'],
-        database=cfg.mysql['database']
-        )
+            host=cfg.mysql['host'],
+            user=cfg.mysql['username'],
+            password=cfg.mysql['password'],
+            database=cfg.mysql['database']
+            )
 
     # function:: Instantiating class to connet to the db
     def __init__(self): 
