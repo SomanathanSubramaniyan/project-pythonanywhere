@@ -38,15 +38,22 @@
             
             <div class='col-lg-4'>
                 <div class="data"> <button onclick="signOut()" class="btn btn-danger" style="display:none;" id="sButton">SignOut</button> </div>
-                
-            </div>
+             </div>
         </div>
     <!-- Google API Sign-in module  :: ENDs HERE -->
 
     <!-- Start: Border between GOOGLE API and the Accident details -->
         <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:10px"></div>
         <!-- Display the GET/PUT/POST/DELETE Success details--> 
-         <div class="row container-fluid p-3 my-3 bg-primary text-white" id="output" style="height:15px;align-content: center;"></div>
+        <div class="row" >
+            <div class='col-lg-4'>
+                <div class="row container-fluid p-3 my-3 bg-primary text-white" id="output" style="height:15px;align-content: center;"></div>
+            </div>
+            <div class='col-lg-4'>
+                <button onclick="Reload()" class="btn btn-primary" style="display:block;" id="sReload">Refresh/Log an Accident</button> 
+            </div>
+
+        </div>
     <!-- End: Border between GOOGLE API and the Accident details -->
 
     <!-- Start: Accident form to capture the details -->
@@ -181,6 +188,10 @@
 
                 
             }
+    function Reload()
+    {
+        location.reload(); 
+    }
 
     function showcreate()
     {
