@@ -42,9 +42,14 @@
             </div>
         </div>
     <!-- Google API Sign-in module  :: ENDs HERE -->
-        <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:30px"></div>
 
+    <!-- Start: Border between GOOGLE API and the Accident details -->
+        <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:30px"></div>
+    <!-- End: Border between GOOGLE API and the Accident details -->
+
+    <!-- Start: Accident form to capture the details -->
         <div class="row" id="Accidentdetails" style="display:none;">
+        <span class="border border-primary">
             <div class="col-lg-5">
                 <form id="createUpdateForm" class="form-horizontal">
                     <h3><span id="createLabel">Log a New</span>
@@ -108,7 +113,11 @@
                 </form>
                 <button class="btn btn-primary" id="doCreateButton" onclick="doCreate()">Create</button>
                 <span><button class="btn btn-primary" id="doUpdateButton" onclick="doUpdate()" style="display:none">Update</button></span>
+            </span>
             </div>  
+            <!-- End: Accident form to capture the details -->
+            
+            <!-- Start: Table to display the captured accident details--> 
             <div class="col-lg-7">
                     <h3><span id="tableReport">Accident Details</span>
                     </h3>
@@ -125,7 +134,10 @@
                         </thead>
                     </table>
             </div>
+            <!-- End: Table to display the captured accident details--> 
         </div>
+        
+        <!-- Display the GET/PUT/POST/DELETE Success details--> 
         <div id="output"></div>
     </body>
 
