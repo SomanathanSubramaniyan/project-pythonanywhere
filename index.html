@@ -50,7 +50,7 @@
     <!-- Start: Accident form to capture the details -->
         <div class="row" id="Accidentdetails" style="display:none;">
             <div id="borda"> 
-                <div class="col-lg-5">
+                <div class="col-lg-5" id="Aform">
                     <form id="createUpdateForm" class="form-horizontal">
                         <h3><span id="createLabel">Log a New</span>
                             <span id="UpdateLabel" style="display:none">Update the</span>
@@ -293,6 +293,8 @@
                             console.log("error: "+status+" msg:"+error);                 
                             }            
                         });
+                document.getElementById("Aform").style.display="none"
+                document.getElementById("Atable").style.display="block"
             }
     // Get all the accident details from the database
     // use a for loop to populate the taccident table
@@ -354,6 +356,8 @@
                                 console.log("error:"+status+" msg:"+error);
                                 }
                         });
+            document.getElementById("Aform").style.display="none"
+            document.getElementById("Atable").style.display="block"
             }     
 
 // this function is used to add the accident details to the taccident table in the html page
@@ -389,6 +393,8 @@
                 var index = rowElement.rowIndex;
                 DeleteAccident(rowElement.getAttribute("id"));
                 tableElement.deleteRow(index);
+                document.getElementById("Aform").style.display="block"
+                document.getElementById("Atable").style.display="none"
             }  
 
         function showUpdate(buttonElement) 
@@ -428,6 +434,8 @@
                 setAccidentInRow(rowElement,Accident);
                 clearForm();
                 showcreate();
+                document.getElementById("Aform").style.display="block"
+                document.getElementById("Atable").style.display="none"
             }
         
         function setAccidentInRow(rowElement, Accident)
