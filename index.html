@@ -45,6 +45,8 @@
 
     <!-- Start: Border between GOOGLE API and the Accident details -->
         <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:15px"></div>
+        <!-- Display the GET/PUT/POST/DELETE Success details--> 
+         <div class="p-3 mb-2 bg-success text-white" id="output" style="height:15px"></div>
     <!-- End: Border between GOOGLE API and the Accident details -->
 
     <!-- Start: Accident form to capture the details -->
@@ -113,10 +115,6 @@
                     </form>
                     <button class="btn btn-primary" id="doCreateButton" onclick="doCreate()">Create</button>
                     <span><button class="btn btn-primary" id="doUpdateButton" onclick="doUpdate()" style="display:none">Update</button></span>
-                    
-                    <!-- Display the GET/PUT/POST/DELETE Success details--> 
-                    <div class="p-3 mb-2 bg-success text-white" id="output"></div>
-
                 </div>
             </div>  
             <!-- End: Accident form to capture the details -->
@@ -392,8 +390,8 @@
                 var index = rowElement.rowIndex;
                 DeleteAccident(rowElement.getAttribute("id"));
                 tableElement.deleteRow(index);
-                document.getElementById("Aform").style.display="block";
-                document.getElementById("Atable").style.display="none";
+                document.getElementById("Aform").style.display="none";
+                document.getElementById("Atable").style.display="block";
             }  
 
         function showUpdate(buttonElement) 
