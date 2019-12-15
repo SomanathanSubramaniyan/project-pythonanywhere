@@ -11,6 +11,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- Place to position the google sign-in button-->
     </head>
+    <style>
+    #borda {
+        border-left: 1px solid rgb(204, 204, 204);
+        border-right: 1px solid #ccc;
+        background-color: #FFFFFF;
+        padding-bottom: 50px;
+        clear: both;
+        display: inline-table;
+     }
+    </style>
 
     <body>
     <!-- Web Page Heading -->
@@ -49,71 +59,71 @@
 
     <!-- Start: Accident form to capture the details -->
         <div class="row" id="Accidentdetails" style="display:none;">
-        <span class="border border-primary">
-            <div class="col-lg-5">
-                <form id="createUpdateForm" class="form-horizontal">
-                    <h3><span id="createLabel">Log a New</span>
-                        <span id="UpdateLabel" style="display:none">Update the</span>
-                        <span>Accident Details</span>
-                    </h3>
-                        <div class="form-group">
-                            <div class="input-group-prepend">
-                                <label class="col-sm-4 control-label">Province       :</label>
+            <div id="borda"> 
+                <div class="col-lg-5">
+                    <form id="createUpdateForm" class="form-horizontal">
+                        <h3><span id="createLabel">Log a New</span>
+                            <span id="UpdateLabel" style="display:none">Update the</span>
+                            <span>Accident Details</span>
+                        </h3>
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <label class="col-sm-4 control-label">Province       :</label>
+                                </div>
+                                <input type="hidden" name="id"/>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="province">
+                                            <option selected="selected">Munster</option>
+                                            <option>Leinster</option>
+                                            <option>Ulster</option>
+                                            <option>Connaught</option>
+                                    </select>
+                                </div>
                             </div>
-                            <input type="hidden" name="id"/>
-                            <div class="col-sm-8">
-                                <select class="form-control" id="province">
-                                        <option selected="selected">Munster</option>
-                                        <option>Leinster</option>
-                                        <option>Ulster</option>
-                                        <option>Connaught</option>
-                                </select>
+                            <div class="form-group">
+                                    <label class="col-sm-4 control-label">Vehicle Type:</label> 
+                                    <div class="col-sm-8">
+                                            <select class="form-control" id="VehicleType">
+                                                    <option selected>Bus</option>
+                                                    <option>Lorry</option>
+                                                    <option>Car</option>
+                                                    <option>Cycle</option>
+                                                    <option>Truck</option>
+                                            </select>
+                                    </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="col-sm-4 control-label">Vehicle Type:</label> 
-                                <div class="col-sm-8">
-                                        <select class="form-control" id="VehicleType">
-                                                <option selected>Bus</option>
-                                                <option>Lorry</option>
-                                                <option>Car</option>
-                                                <option>Cycle</option>
-                                                <option>Truck</option>
-                                        </select>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="col-sm-4 control-label">Driver Age    :</label> 
-                                <div class="col-sm-8">
-                                        <select class="form-control" id="DriverAge">
-                                                <option selected>16-20:Years</option>
-                                                <option>20-30:Years</option>
-                                                <option>40-50:Years</option>
-                                                <option>50-60:Years</option>
-                                                <option>61+:Years</option>
-                                        </select>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="col-sm-4 control-label">Driver Gender  :</label> 
-                                <div class="col-sm-8">
-                                        <select class="form-control" id="DriverSex">
-                                                <option selected>Male</option>
-                                                <option>Female</option>
-                                        </select>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="col-sm-4 control-label">Month-Year      :</label> 
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="month" name="MonthYear" id="MonthYear" min="2010-01" value="2019-12" >
-                                </div>
+                            <div class="form-group">
+                                    <label class="col-sm-4 control-label">Driver Age    :</label> 
+                                    <div class="col-sm-8">
+                                            <select class="form-control" id="DriverAge">
+                                                    <option selected>16-20:Years</option>
+                                                    <option>20-30:Years</option>
+                                                    <option>40-50:Years</option>
+                                                    <option>50-60:Years</option>
+                                                    <option>61+:Years</option>
+                                            </select>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                    <label class="col-sm-4 control-label">Driver Gender  :</label> 
+                                    <div class="col-sm-8">
+                                            <select class="form-control" id="DriverSex">
+                                                    <option selected>Male</option>
+                                                    <option>Female</option>
+                                            </select>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                    <label class="col-sm-4 control-label">Month-Year      :</label> 
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="month" name="MonthYear" id="MonthYear" min="2010-01" value="2019-12" >
+                                    </div>
 
-                        </div>
-                </form>
-                <button class="btn btn-primary" id="doCreateButton" onclick="doCreate()">Create</button>
-                <span><button class="btn btn-primary" id="doUpdateButton" onclick="doUpdate()" style="display:none">Update</button></span>
-            </span>
+                            </div>
+                    </form>
+                    <button class="btn btn-primary" id="doCreateButton" onclick="doCreate()">Create</button>
+                    <span><button class="btn btn-primary" id="doUpdateButton" onclick="doUpdate()" style="display:none">Update</button></span>
+                </div>
             </div>  
             <!-- End: Accident form to capture the details -->
             
@@ -136,7 +146,7 @@
             </div>
             <!-- End: Table to display the captured accident details--> 
         </div>
-        
+
         <!-- Display the GET/PUT/POST/DELETE Success details--> 
         <div id="output"></div>
     </body>
