@@ -44,7 +44,7 @@
     <!-- Google API Sign-in module  :: ENDs HERE -->
 
     <!-- Start: Border between GOOGLE API and the Accident details -->
-        <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:30px"></div>
+        <div class="row container-fluid p-3 my-3 bg-light text-white" style="height:15px"></div>
     <!-- End: Border between GOOGLE API and the Accident details -->
 
     <!-- Start: Accident form to capture the details -->
@@ -116,13 +116,13 @@
                     
                     <!-- Display the GET/PUT/POST/DELETE Success details--> 
                     <div class="p-3 mb-2 bg-success text-white" id="output"></div>
-                    
+
                 </div>
             </div>  
             <!-- End: Accident form to capture the details -->
             
             <!-- Start: Table to display the captured accident details--> 
-            <div class="col-lg-7">
+            <div class="col-lg-7" id="Atable">
                     <h3><span id="tableReport">Accident Details</span>
                     </h3>
                     <table class="table table-bordered " id="tAccident">
@@ -191,6 +191,7 @@
         document.getElementById('UpdateLabel').style.display = "none";
         document.getElementById('doCreateButton').style.display = "block";
         document.getElementById('doUpdateButton').style.display = "none";
+
     }
     function showupdate()
     {
@@ -199,10 +200,12 @@
         document.getElementById('UpdateLabel').style.display = "inline";
         document.getElementById('doCreateButton').style.display = "none";
         document.getElementById('doUpdateButton').style.display = "block";
+        document.getElementById("Atable").style.display="none";
     }
     function showViewAll()
     {
         document.getElementById('tAccident').style.display = "inline";
+        document.getElementById("Atable").style.display="block";
     }
 
     // this particular function is called when the google user is sign-off from the site.
