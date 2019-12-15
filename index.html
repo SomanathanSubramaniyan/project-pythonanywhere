@@ -398,6 +398,8 @@
                 var Accident =getAccidentFromRow(rowElement);
                 populateFormWithAccident(Accident);
                 showupdate();
+                document.getElementById("Aform").style.display="block";
+                document.getElementById("Atable").style.display="none";
             }     
         function populateFormWithAccident(Accident)
             {
@@ -429,8 +431,8 @@
                 setAccidentInRow(rowElement,Accident);
                 clearForm();
                 showcreate();
-                document.getElementById("Aform").style.display="block";
-                document.getElementById("Atable").style.display="none";
+                document.getElementById("Aform").style.display="none";
+                document.getElementById("Atable").style.display="block";
             }
         
         function setAccidentInRow(rowElement, Accident)
