@@ -8,7 +8,7 @@ class AccidentDAO:
     db=""
 
      # function:: Connection to DB
-     def connectToDB(self):
+    def connectToDB(self):
         self.db = mysql.connector.connect(
             host=cfg.mysql['host'],
             user=cfg.mysql['username'],
