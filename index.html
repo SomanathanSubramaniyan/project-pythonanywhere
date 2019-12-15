@@ -278,7 +278,7 @@
                                 Accident.id = result.id;
                                 addAccidentToTable(Accident);
                                 clearForm();
-                                document.getElementById("output").value = "Successfully Posted the transaction to Database";
+                                document.getElementById("output").innerHTML = "Successfully Posted the transaction to Database";
                               //  showViewAll()
                           },                 
                         "error":function(xhr,status,error){                     
@@ -300,7 +300,7 @@
                             for (Accident of result){
                                     addAccidentToTable(Accident);
                                     }  
-                            document.getElementById("output").value = "Successfully retrieved the transaction details from Database";
+                            document.getElementById("output").innerHTML = "Successfully retrieved the transaction details from Database";
                                 },
                             "error":function(xhr,status,error){
                                 console.log("error:"+status+" msg:"+error);
@@ -320,7 +320,7 @@
                             "data":"",
                             "dataType": "JSON",
                             "success":function(result){
-                            document.getElementById("output").value = "Successfully deleted the transaction from Database";
+                            document.getElementById("output").innerHTML = "Successfully deleted the transaction from Database";
                              },
                             "error":function(xhr,status,error){
                                 console.log("error:"+status+" msg:"+error);
@@ -340,7 +340,7 @@
                             "dataType": "JSON",
                             contentType: "application/json; charset=utf-8",  
                             "success":function(result){
-                            document.getElementById("output").value = "Successfully updated the transaction in Database";
+                            document.getElementById("output").innerHTML = "Successfully updated the transaction in Database";
                                 },
                             "error":function(xhr,status,error){
                                 console.log("error:"+status+" msg:"+error);
